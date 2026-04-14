@@ -216,6 +216,26 @@ const Navbar = () => {
                 {link}
               </motion.a>
             ))}
+            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-white/20">
+              <motion.button 
+                className="w-full px-5 py-3 text-white border-2 border-tropical-green rounded-lg font-medium hover:bg-tropical-green transition-colors text-center"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                onClick={() => { router.push('/login'); setMobileMenuOpen(false) }}
+              >
+                Log In
+              </motion.button>
+              <motion.button 
+                className="w-full px-5 py-3 bg-ocean-blue text-white rounded-lg font-medium hover:bg-ocean-blue transition-colors shadow-lg text-center"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+                onClick={() => { router.push('/signup'); setMobileMenuOpen(false) }}
+              >
+                Get Started
+              </motion.button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -240,12 +260,12 @@ const HeroSection = () => {
   ]
   
   return (
-    <section ref={ref} className="min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
+    <section ref={ref} className="min-h-screen flex items-center pt-24 pb-16 px-4 md:px-6 overflow-hidden">
       <motion.div 
-        className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center"
+        className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         style={{ y, opacity }}
       >
-        <div>
+        <div className="order-2 lg:order-1">
           <motion.div
             className="inline-flex items-center gap-2 bg-ocean-blue/10 text-ocean-blue px-4 py-2 rounded-full mb-6"
             initial={{ opacity: 0, x: -50 }}
@@ -257,7 +277,7 @@ const HeroSection = () => {
           </motion.div>
           
           <motion.h1 
-            className="text-5xl lg:text-6xl font-bold text-dark-text mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-text mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -267,7 +287,7 @@ const HeroSection = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-lg text-gray-text mb-8 max-w-lg"
+            className="text-base md:text-lg text-gray-text mb-8 max-w-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -283,14 +303,14 @@ const HeroSection = () => {
             transition={{ delay: 0.5 }}
           >
             <motion.button 
-              className="px-8 py-4 bg-gold text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:bg-gold-dark transition-colors"
+              className="px-6 md:px-8 py-3 md:py-4 bg-gold text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:bg-gold-dark transition-colors"
               whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(202, 138, 4, 0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
               Start Exploring <ArrowRight className="w-5 h-5" />
             </motion.button>
             <motion.button 
-              className="px-8 py-4 border-2 border-ocean-blue text-ocean-blue rounded-xl font-semibold flex items-center gap-2 hover:bg-ocean-blue hover:text-white transition-colors"
+              className="px-6 md:px-8 py-3 md:py-4 border-2 border-ocean-blue text-ocean-blue rounded-xl font-semibold flex items-center gap-2 hover:bg-ocean-blue hover:text-white transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -299,7 +319,7 @@ const HeroSection = () => {
           </motion.div>
           
           <motion.div 
-            className="flex gap-12"
+            className="flex gap-8 md:gap-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -312,7 +332,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + i * 0.1 }}
               >
-                <div className="text-3xl font-bold text-ocean-blue">{stat.number}</div>
+                <div className="text-2xl md:text-3xl font-bold text-ocean-blue">{stat.number}</div>
                 <div className="text-sm text-gray-text">{stat.label}</div>
               </motion.div>
             ))}
@@ -320,7 +340,7 @@ const HeroSection = () => {
         </div>
         
         <motion.div 
-          className="relative h-[500px]"
+          className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] order-1 lg:order-2"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4 }}
