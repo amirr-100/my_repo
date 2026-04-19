@@ -2,13 +2,14 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mountain, Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react'
+import { Mountain, Mail, ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import IconInput from '@/components/IconInput'
+import Button from '@/components/Button'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -80,42 +81,24 @@ export default function LoginPage() {
               )}
             </AnimatePresence>
 
-            <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white"
-                  required
-                />
-              </div>
-            </div>
+            <IconInput
+              label="Email Address"
+              icon={Mail}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+            />
 
-            <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-text hover:text-dark-text transition-colors"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
+            <IconInput
+              label="Password"
+              showPasswordToggle
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+            />
 
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2 cursor-pointer">
@@ -127,21 +110,9 @@ export default function LoginPage() {
               </a>
             </div>
 
-            <motion.button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-4 bg-gold text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
-              whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(202, 138, 4, 0.3)' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {isLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <>
-                  Sign In <ArrowRight className="w-5 h-5" />
-                </>
-              )}
-            </motion.button>
+            <Button isLoading={isLoading} icon={ArrowRight}>
+              Sign In
+            </Button>
           </motion.form>
 
           <motion.p 

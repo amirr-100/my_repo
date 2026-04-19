@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mountain, Mail, Lock, Eye, EyeOff, User, Phone, ArrowRight, Loader2, Check } from 'lucide-react'
+import { Mountain, Mail, User, Phone, ArrowRight, Check } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import IconInput from '@/components/IconInput'
+import Button from '@/components/Button'
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -14,8 +16,7 @@ export default function SignupPage() {
     password: '',
     confirmPassword: ''
   })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -192,89 +193,61 @@ export default function SignupPage() {
             </AnimatePresence>
 
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-dark-text mb-2">First Name</label>
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    placeholder="Enter your first name"
-                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-dark-text mb-2">Last Name</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    placeholder="Enter your last name"
-                    className="w-full pl-4 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                    required
-                  />
-                </div>
-              </div>
+              <IconInput
+                label="First Name"
+                icon={User}
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="Enter your first name"
+                required
+                inputClassName="py-3.5 text-sm"
+              />
+              <IconInput
+                label="Last Name"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Enter your last name"
+                required
+                inputClassName="py-3.5 text-sm"
+              />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                  required
-                />
-              </div>
-            </div>
+            <IconInput
+              label="Email Address"
+              icon={Mail}
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="you@example.com"
+              required
+              inputClassName="py-3.5 text-sm"
+            />
+
+            <IconInput
+              label="Phone Number (Optional)"
+              icon={Phone}
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+232 XX XXX XXXX"
+              inputClassName="py-3.5 text-sm"
+            />
 
             <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Phone Number (Optional)</label>
-              <div className="relative">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+232 XX XXX XXXX"
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Create a strong password"
-                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-text hover:text-dark-text transition-colors"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
+              <IconInput
+                label="Password"
+                showPasswordToggle
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Create a strong password"
+                required
+                inputClassName="py-3.5 text-sm"
+              />
               
               <div className="mt-3 space-y-2">
                 {passwordRequirements.map((req, i) => (
@@ -294,28 +267,16 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-dark-text mb-2">Confirm Password</label>
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  placeholder="Confirm your password"
-                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-ocean-blue focus:outline-none transition-colors bg-white text-sm"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-text hover:text-dark-text transition-colors"
-                >
-                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
+            <IconInput
+              label="Confirm Password"
+              showPasswordToggle
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm your password"
+              required
+              inputClassName="py-3.5 text-sm"
+            />
 
             <label className="flex items-start gap-3 cursor-pointer mt-2">
               <input type="checkbox" className="w-4 h-4 mt-1 rounded border-gray-300 text-ocean-blue focus:ring-ocean-blue" required />
@@ -327,21 +288,9 @@ export default function SignupPage() {
               </span>
             </label>
 
-            <motion.button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-4 bg-gold text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
-              whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(202, 138, 4, 0.3)' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {isLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <>
-                  Create Account <ArrowRight className="w-5 h-5" />
-                </>
-              )}
-            </motion.button>
+            <Button isLoading={isLoading} icon={ArrowRight}>
+              Create Account
+            </Button>
           </motion.form>
 
           <motion.p 

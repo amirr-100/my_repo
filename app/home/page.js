@@ -9,6 +9,7 @@ import {
   Twitter, Youtube, Sun, Cloud, ThermometerSun, Wind
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import IconInput from '@/components/IconInput'
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const router = useRouter()
@@ -166,12 +167,12 @@ const Header = ({ setIsOpen }) => {
     <header className="fixed top-0 right-0 left-0 bg-soft-white border-b border-gray-200 z-30">
       <div className="flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-4">
-          <div className="relative pl-16 lg:pl-20">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-text" />
-            <input
-              type="text"
+          <div className="pl-16 lg:pl-20">
+            <IconInput
+              icon={Search}
               placeholder="Search destinations, trips..."
-              className="pl-10 pr-4 py-2 w-64 lg:w-96 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-ocean-blue transition-colors"
+              className="w-64 lg:w-96"
+              inputClassName="py-2"
             />
           </div>
         </div>
