@@ -601,7 +601,7 @@ const DestinationsSection = () => {
   const destinations = [
     { name: 'Tokeh Beach', description: 'Pristine white sand beaches with crystal-clear waters', rating: 4.8, location: 'Western Area', image: 'https://picsum.photos/seed/beach/600/400', mapLink: 'https://maps.google.com/?q=Tokeh+Beach+Sierra+Leone' },
     { name: 'Bintumani Peak', description: 'Highest mountain peak with stunning views', rating: 4.9, location: 'Northern Province', image: 'https://picsum.photos/seed/mountain/600/400', mapLink: 'https://maps.google.com/?q=Bintumani+Peak+Sierra+Leone' },
-    { name: 'Tacugama Chimp Sanctuary', description: 'Experience chimpanzee conservation up close', rating: 4.7, location: 'Western Area', image: 'https://picsum.photos/seed/wildlife/600/400', mapLink: 'https://maps.google.com/?q=Tacugama+Chimp+Sanctuary+Sierra+Leone' },
+    { name: 'Tacugama Chimp Sanctuary', description: 'Experience chimpanzee conservation up close', rating: 4.7, location: 'Western Area', image: "tokeh.jpg", mapLink: 'https://maps.google.com/?q=Tacugama+Chimp+Sanctuary+Sierra+Leone' },
   ]
   
   return (
