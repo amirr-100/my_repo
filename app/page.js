@@ -601,7 +601,7 @@ const DestinationsSection = () => {
   const destinations = [
     { name: 'Tokeh Beach', description: 'Pristine white sand beaches with crystal-clear waters', rating: 4.8, location: 'Western Area', image: 'https://picsum.photos/seed/beach/600/400', mapLink: 'https://maps.google.com/?q=Tokeh+Beach+Sierra+Leone' },
     { name: 'Bintumani Peak', description: 'Highest mountain peak with stunning views', rating: 4.9, location: 'Northern Province', image: 'https://picsum.photos/seed/mountain/600/400', mapLink: 'https://maps.google.com/?q=Bintumani+Peak+Sierra+Leone' },
-    { name: 'Tacugama Chimp Sanctuary', description: 'Experience chimpanzee conservation up close', rating: 4.7, location: 'Western Area', image: 'https://picsum.photos/seed/wildlife/600/400', mapLink: 'https://maps.google.com/?q=Tacugama+Chimp+Sanctuary+Sierra+Leone' },
+    { name: 'Tacugama Chimp Sanctuary', description: 'Experience chimpanzee conservation up close', rating: 4.7, location: 'Western Area', image: 'https://www.bing.com/images/search?view=detailV2&ccid=YEyYTsNu&id=FD27D68D1EC2A84212AA0A1DC86AF61763E3AAFA&thid=OIP.YEyYTsNu0PrK7dygdWad7AHaE8&mediaurl=https%3a%2f%2fdynamic-media-cdn.tripadvisor.com%2fmedia%2fphoto-o%2f03%2ff7%2ff2%2f0b%2ftokeh-sands-beach-resort.jpg%3fw%3d1200%26h%3d-1%26s%3d1&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.604c984ec36ed0facaeddca075669dec%3frik%3d%252bqrjYxf2asgdCg%26pid%3dImgRaw%26r%3d0&exph=800&expw=1200&q=tokeh+beach+resort&FORM=IRPRST&ck=C5090D4C784BE1F0F25D9C8DF45B7F68&selectedIndex=2&itb=0', mapLink: 'https://maps.google.com/?q=Tacugama+Chimp+Sanctuary+Sierra+Leone' },
   ]
   
   return (
